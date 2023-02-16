@@ -24,7 +24,7 @@ mongoose.connect(MONGODB_URI, {
 // Routes
 app.use('/auth', require('./routes/authRouter'));
 app.use('/api', expressjwt({secret: process.env.SECRET, algorithms: ['HS256']}));
-app.use('/api/journal', require('./routes/journalRouter.js'));
+app.use('/api/journal', require('./routes/entryRouter.js'));
 app.use('/api/user', require('./routes/userRouter.js'));
 
 // Error handler
