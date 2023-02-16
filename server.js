@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const morgan = require('morgan');
 const { expressjwt } = require('express-jwt');
-const { PORT, MONGODB_URI } = process.env;
+const { PORT, MONGO_URI } = process.env;
 
 // Middleware
 app.use(express.json());
