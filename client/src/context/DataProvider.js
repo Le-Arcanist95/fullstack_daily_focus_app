@@ -17,7 +17,7 @@ export default function DataProvider({ children }) {
         } catch (error) {
             console.log(error);
         }
-    }, []);
+    }, [user]);
 
     // Get all todos
     const getTodos = useCallback(async () => {
@@ -27,7 +27,7 @@ export default function DataProvider({ children }) {
         } catch (error) {
             console.log(error);
         }
-    }, []);
+    }, [user]);
 
     // Get all entries and todos
     useEffect(() => {
