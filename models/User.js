@@ -22,6 +22,14 @@ const userSchema = new Schema({
     memberSince: {
         type: Date,
         default: Date.now
+    },
+    entries: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Entry'
+    }]
+    isAdmin: {
+        type: Boolean,
+        default: false
     }
 });
 
