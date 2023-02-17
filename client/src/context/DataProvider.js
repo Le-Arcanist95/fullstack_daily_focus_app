@@ -8,6 +8,20 @@ export default function DataProvider({ children }) {
     const { user } = useContext(AuthContext);
     const [entryData, setEntryData] = useState([]);
     const [todoData, setTodoData] = useState([]);
+    const [externalApiData, setExternalApiData] = useState({
+        astroPicture: {
+            title: "",
+            explanation: "",
+            url: "",
+            copyright: ""
+        },
+        quoteOfTheDay: {
+            quote: "",
+            author: "",
+            backgroundImg: "",
+            title: ""
+        }
+    });
 
     // Get all entries
     const getEntries = useCallback(async () => {
@@ -36,6 +50,40 @@ export default function DataProvider({ children }) {
             getTodos();
         }
     }, [user, getEntries, getTodos]);
+
+    // Get external API data
+    useEffect(() => {
+        const fetchData = async () => {
+            const endpoints = [
+                'https://api.nasa.gov/planetary/apod?api_key=YQVratHzp85sqeL2JyuCAMOXJFVhUuXaBLoIvSco',
+                'https://quotes.rest/qod'
+            ]
+            Axios.all(endpoints.map((endpoint) => Axios.get(endpoint)))
+                .then(
+                    Axios.spread(({data: apod}, {data: qod}) => {
+                        const quoteData = qod.contents.quotes[0];
+                        
+                        setExternalApiData(prevData => ({
+                            ...prevData,
+                            astroPicture: {
+                                title: apod.title,
+                                explanation: apod.explanation,
+                                url: apod.hdurl,
+                                copyright: apod.copyright
+                            },
+                            quoteOfTheDay: {
+                                quote: quoteData.quote,
+                                author: quoteData.author,
+                                backgroundImg: quoteData.background,
+                                title: quoteData.title
+                            }
+                        }));
+                    })
+                );
+        };
+        
+        fetchData();
+    }, []);
 
     // Add entry
     const addEntry = async (newEntry) => {
