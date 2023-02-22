@@ -26,7 +26,7 @@ const userSchema = new Schema({
     entries: [{
         type: Schema.Types.ObjectId,
         ref: 'Entry'
-    }]
+    }],
     isAdmin: {
         type: Boolean,
         default: false

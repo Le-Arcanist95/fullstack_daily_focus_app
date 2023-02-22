@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useCallback, useEffect } from "react";
 import AuthContext from "./AuthContext.js";
-import { axiosClientPrivate } from "../axios.js";
+import { axiosClient, serverClientPrivate } from "../axios.js";
 
 export const DataContext = createContext();
 
@@ -26,7 +26,7 @@ export default function DataProvider({ children }) {
     // Get all entries
     const getEntries = useCallback(async () => {
         try {
-            const response = await axiosClientPrivate.get(`journal/${user._id}`);
+            const response = await serverClientPrivate.get(`journal/${user._id}`);
             setEntryData(response.data);
         } catch (error) {
             console.log(error);
@@ -36,7 +36,7 @@ export default function DataProvider({ children }) {
     // Get all todos
     const getTodos = useCallback(async () => {
         try {
-            const response = await axiosClientPrivate.get(`todos/${user._id}`);
+            const response = await serverClientPrivate.get(`todos/${user._id}`);
             setTodoData(response.data);
         } catch (error) {
             console.log(error);
@@ -58,9 +58,9 @@ export default function DataProvider({ children }) {
                 'https://api.nasa.gov/planetary/apod?api_key=YQVratHzp85sqeL2JyuCAMOXJFVhUuXaBLoIvSco',
                 'https://quotes.rest/qod'
             ]
-            Axios.all(endpoints.map((endpoint) => Axios.get(endpoint)))
+            axiosClient.all(endpoints.map((endpoint) => axiosClient.get(endpoint)))
                 .then(
-                    Axios.spread(({data: apod}, {data: qod}) => {
+                    axiosClient.spread(({data: apod}, {data: qod}) => {
                         const quoteData = qod.contents.quotes[0];
                         
                         setExternalApiData(prevData => ({
@@ -88,7 +88,7 @@ export default function DataProvider({ children }) {
     // Add entry
     const addEntry = async (newEntry) => {
         try {
-            const response = await axiosClientPrivate.post(`journal/${user._id}`, newEntry);
+            const response = await serverClientPrivate.post(`journal/${user._id}`, newEntry);
             setEntryData(prevEntries => [...prevEntries, response.data]);
         } catch (error) {
             console.log(error);
@@ -98,7 +98,7 @@ export default function DataProvider({ children }) {
     // Add todo
     const addTodo = async (newTodo) => {
         try {
-            const response = await axiosClientPrivate.post(`todos/${user._id}`, newTodo);
+            const response = await serverClientPrivate.post(`todos/${user._id}`, newTodo);
             setTodoData(prevTodos => [...prevTodos, response.data]);
         } catch (error) {
             console.log(error);
@@ -108,7 +108,7 @@ export default function DataProvider({ children }) {
     // Delete entry
     const deleteEntry = async (entryId) => {
         try {
-            await axiosClientPrivate.delete(`journal/${user._id}/${entryId}`);
+            await serverClientPrivate.delete(`journal/${user._id}/${entryId}`);
             setEntryData(prevEntries => prevEntries.filter(entry => entry._id !== entryId));
         } catch (error) {
             console.log(error);
@@ -118,7 +118,7 @@ export default function DataProvider({ children }) {
     // Delete todo
     const deleteTodo = async (todoId) => {
         try {
-            await axiosClientPrivate.delete(`todos/${user._id}/${todoId}`);
+            await serverClientPrivate.delete(`todos/${user._id}/${todoId}`);
             setTodoData(prevTodos => prevTodos.filter(todo => todo._id !== todoId));
         } catch (error) {
             console.log(error);
@@ -128,7 +128,7 @@ export default function DataProvider({ children }) {
     // Update entry
     const updateEntry = async (updatedEntry) => {
         try {
-            const response = await axiosClientPrivate.put(`journal/${user._id}/${updatedEntry._id}`, updatedEntry);
+            const response = await serverClientPrivate.put(`journal/${user._id}/${updatedEntry._id}`, updatedEntry);
             setEntryData(prevEntries => prevEntries.map(entry => entry._id === updatedEntry._id ? response.data : entry));
         } catch (error) {
             console.log(error);
@@ -138,7 +138,7 @@ export default function DataProvider({ children }) {
     // Update todo
     const updateTodo = async (updatedTodo) => {
         try {
-            const response = await axiosClientPrivate.put(`todos/${user._id}/${updatedTodo._id}`, updatedTodo);
+            const response = await serverClientPrivate.put(`todos/${user._id}/${updatedTodo._id}`, updatedTodo);
             setTodoData(prevTodos => prevTodos.map(todo => todo._id === updatedTodo._id ? response.data : todo));
         } catch (error) {
             console.log(error);
@@ -150,6 +150,7 @@ export default function DataProvider({ children }) {
             { 
                 entryData, 
                 todoData, 
+                externalApiData,
                 getEntries, 
                 getTodos,
                 addEntry,

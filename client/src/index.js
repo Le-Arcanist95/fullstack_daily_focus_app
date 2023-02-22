@@ -7,9 +7,9 @@ import {
     Route 
 } from "react-router-dom";
 import App from "./App";
-import Home from "./routes/Home";
-import Journal from "./routes/Journal";
-import Tasks from "./routes/Tasks";
+import Home from "./pages/Home";
+import Journal from "./pages/Journal";
+import Tasks from "./pages/Tasks";
 import "./index.scss";
 
 const root = createRoot(document.getElementById("root"));

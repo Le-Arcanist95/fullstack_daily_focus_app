@@ -14,7 +14,8 @@ app.use(cors({origin: 'http://localhost:3000', credentials: true}));
 app.use(morgan('dev'));
 
 // Connect to MongoDB
-mongoose.connect(MONGODB_URI, {
+mongoose.set('strictQuery', true);
+mongoose.connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -23,9 +24,9 @@ mongoose.connect(MONGODB_URI, {
 
 // Routes
 app.use('/auth', require('./routes/authRouter'));
-app.use('/api', expressjwt({secret: process.env.SECRET, algorithms: ['HS256']}));
+app.use('/api', expressjwt({secret: process.env.ACCESS_TOKEN_SECRET, algorithms: ['HS256']}));
 app.use('/api/journal', require('./routes/entryRouter.js'));
-app.use('/api/user', require('./routes/userRouter.js'));
+app.use('/api/todo', require('./routes/todoRouter.js'));
 
 // Error handler
 app.use((err, req, res, next) => {

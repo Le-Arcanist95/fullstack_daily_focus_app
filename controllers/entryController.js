@@ -1,4 +1,4 @@
-import Entry from '../models/Entry';
+const Entry = require('../models/Entry');
 
 // Get all entries -- ADMIN ONLY
 exports.getAllEntries = (req, res) => {

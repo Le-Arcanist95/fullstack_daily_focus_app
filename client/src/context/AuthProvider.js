@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import { axiosClient } from "../axios.js";
+import { serverClient } from "../axios.js";
 
 export const AuthContext = createContext();
 
@@ -18,7 +18,7 @@ export default function AuthProvider({ children }) {
 
     const login = async (credentials) => {
         try {
-            const response = await axiosClient.post("/auth/login", credentials);
+            const response = await serverClient.post("/auth/login", credentials);
             const { user, token } = response.data;
             localStorage.setItem("user", JSON.stringify(user));
             localStorage.setItem("token", token);
@@ -31,7 +31,7 @@ export default function AuthProvider({ children }) {
 
     const register = async (credentials) => {
         try {
-            await axiosClient.post("/auth/register", credentials);
+            await serverClient.post("/auth/register", credentials);
             setRedirectState("/login");
         } catch (error) {
             handleAuthError(error);

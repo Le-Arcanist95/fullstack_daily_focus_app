@@ -1,12 +1,13 @@
 const express = require('express');
 const entryRouter = express.Router();
-const { getEntriesForUser, createEntryForUser, updateEntryForUser, deleteEntryForUser } = require('../controllers/entryController');
+const { getAllEntriesForUser, getOneEntryForUser, createEntryForUser, updateEntryForUser, deleteEntryForUser } = require('../controllers/entryController');
 
 entryRouter.route('/:userId')
-    .get(getEntriesForUser)
+    .get(getAllEntriesForUser)
     .post(createEntryForUser);
 
 entryRouter.route('/:userId/:entryId')
+    .get(getOneEntryForUser)
     .put(updateEntryForUser)
     .delete(deleteEntryForUser);
 

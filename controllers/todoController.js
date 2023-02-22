@@ -1,4 +1,4 @@
-import Todo from '../models/Todo';
+const Todo = require('../models/Todo');
 
 // Get all todos -- ADMIN ONLY
 exports.getAllTodos = (req, res) => {
@@ -80,6 +80,18 @@ exports.getOneTodoByUser = (req, res) => {
             return next(err);
         };
         return res.status(200).send(todo);
+    });
+}
+// Create a new todo by user
+exports.createTodoByUser = (req, res) => {
+    req.body.user = req.params.userId;
+    const newTodo = new Todo(req.body);
+    newTodo.save((err, savedTodo) => {
+        if(err) {
+            res.status(500);
+            return next(err);
+        };
+        return res.status(201).send(savedTodo);
     });
 }
 
