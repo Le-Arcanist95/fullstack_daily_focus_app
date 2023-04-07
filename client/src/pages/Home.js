@@ -5,13 +5,13 @@ export default function Home() {
     const { externalApiData } = useContext(DataContext);
 
     return (
-        <div className="content-container">
-            <div className="w-full max-w-2xl p-10 mx-auto my-6 text-center shadow-md">
+        <>
+            <div className="w-full max-w-5xl p-10 mx-auto my-6 text-center shadow-xl border-t-2 border-slate-700 bg-slate-200">
                 <h3 className="uppercase font-semibold text-4xl text-center p-4"> Are you focused today? </h3>
                 <hr/>
                 <p className="my-2"> Hello there! Welcome to a space created for you. In the day to day, within each and every second of them, we can find ourselves swept away by the constant flood of information we're being fed; This can get overwhelming and eventually cause burnout where we lose our ability to continue. When I started this project, my intention was to create a place where I could keep up with my thoughts in a way that worked for me. I've always struggled with physically writing things down consistently because I have to look for the pencil and pad, writing left-handed I will sometimes smear the ink or graphite, or I'll fill up a notebook and 'Dratz!' I've got to go out and buy another. I am aware these are minimal concerns, but ease is important when the task seems daunting! Although, I find myself sitting down at a computer screen constantly throughout the day and typing things out isn't as much of an issue for my perfectionism. It's worked for me so far. If you've found this little creation, or been led here by another, I imagine that these things may resonate with you. Will you take a moment to look around and give it a go as well? </p>
             </div>
-            <div className="w-full max-w-2xl p-10 mx-auto my-6 text-center shadow-md">
+            <div className="w-full max-w-5xl p-10 mx-auto mb-2 my-6 text-center shadow-xl border-t-2 border-slate-700 bg-slate-200">
                 <h3 className="uppercase font-semibold text-4xl text-center p-4">
                     {externalApiData.astroPicture.title}
                 </h3>
@@ -35,6 +35,6 @@ export default function Home() {
                     </a>
                 </span>
             </div> */}
-        </div>
+        </>
     );
 };

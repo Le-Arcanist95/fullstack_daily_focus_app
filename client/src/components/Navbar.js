@@ -45,16 +45,16 @@ export default function Navbar() {
         );
     } else {
         return (
-            <nav id="navbar">
-                <ul className="nav-list">
-                    <li className="border shadow-inner py-3 px-60 text-lg font-light bg-amber-700 uppercase">
+            <nav className="p-1">
+                <ul className="flex justify-evenly items-center list-none">
+                    <li className="border shadow-inner py-3 px-60 w-1/2 text-lg font-light bg-amber-700 uppercase">
                         <NavLink to="/" className={({ isActive }) =>
                             isActive ? "text-emerald-700" : "no-underline text-white"
                         } end>
                             Home
                         </NavLink>
                     </li>
-                    <li className="border shadow-inner py-3 px-60 text-lg font-light bg-amber-700 uppercase">
+                    <li className="border shadow-inner py-3 px-60 w-1/2 text-lg font-light bg-amber-700 uppercase">
                         <NavLink to="auth" className={({ isActive }) =>
                             isActive ? "text-emerald-700" : "no-underline text-white"
                         }>
