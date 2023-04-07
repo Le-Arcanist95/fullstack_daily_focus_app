@@ -1,14 +1,28 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
-import Header from "./components/Header";
+import { Routes, Route } from "react-router-dom";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Layout from "./components/Layout";
+import Auth from "./pages/Auth";
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import Journal from "./pages/Journal";
+import Tasks from "./pages/Tasks";
 
 export default function App() {
     return (
-        <div id="page-container">
-            <Header />
-            <div id="content-wrapper">
-                <Outlet />
-            </div>
-        </div>
+        <Routes>
+            <Route path="/" element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path="auth" element={<Auth />} />
+                <Route path="profile" element={<ProtectedRoute />}>
+                    <Route index element={<Profile />} />
+                </Route>
+                <Route path="journal" element={<ProtectedRoute />}>
+                    <Route index element={<Journal />} />
+                </Route>
+                <Route path="tasks" element={<ProtectedRoute />}>
+                    <Route index element={<Tasks />} />
+                </Route>
+            </Route>
+        </Routes>
     );
 };

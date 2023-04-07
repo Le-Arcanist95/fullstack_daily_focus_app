@@ -1,9 +1,9 @@
 import React, { createContext, useState } from "react";
 import { serverClient } from "../axios.js";
 
-export const AuthContext = createContext();
+const AuthContext = createContext();
 
-export default function AuthProvider({ children }) {
+export function AuthProvider({ children }) {
     const [userState, setUserState] = useState({
         user: JSON.parse(localStorage.getItem("user")) || null,
         token: localStorage.getItem("token") || ""
@@ -51,3 +51,5 @@ export default function AuthProvider({ children }) {
         </AuthContext.Provider>
     );
 }
+
+export default AuthContext;

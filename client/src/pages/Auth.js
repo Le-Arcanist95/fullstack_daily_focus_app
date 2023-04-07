@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { Navigate } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
+import AuthContext from "../context/AuthProvider";
 import AuthForm from "../components/AuthForm";
 
 const defaultInputs = {

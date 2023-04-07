@@ -1,10 +1,10 @@
 import React, { createContext, useContext, useState, useCallback, useEffect } from "react";
-import AuthContext from "./AuthContext.js";
+import AuthContext from "./AuthProvider.js";
 import { axiosClient, serverClientPrivate } from "../axios.js";
 
-export const DataContext = createContext();
+const DataContext = createContext();
 
-export default function DataProvider({ children }) {
+export function DataProvider({ children }) {
     const { user } = useContext(AuthContext);
     const [entryData, setEntryData] = useState([]);
     const [todoData, setTodoData] = useState([]);
@@ -165,3 +165,5 @@ export default function DataProvider({ children }) {
         </DataContext.Provider>
     );
 }
+
+export default DataContext;
