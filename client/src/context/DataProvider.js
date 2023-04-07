@@ -55,13 +55,11 @@ export function DataProvider({ children }) {
     useEffect(() => {
         const fetchData = async () => {
             const endpoints = [
-                'https://api.nasa.gov/planetary/apod?api_key=YQVratHzp85sqeL2JyuCAMOXJFVhUuXaBLoIvSco',
-                'https://quotes.rest/qod'
+                'https://api.nasa.gov/planetary/apod?api_key=YQVratHzp85sqeL2JyuCAMOXJFVhUuXaBLoIvSco'
             ]
             axiosClient.all(endpoints.map((endpoint) => axiosClient.get(endpoint)))
                 .then(
-                    axiosClient.spread(({data: apod}, {data: qod}) => {
-                        const quoteData = qod.contents.quotes[0];
+                    axiosClient.spread(({data: apod}) => {
                         
                         setExternalApiData(prevData => ({
                             ...prevData,
@@ -70,12 +68,6 @@ export function DataProvider({ children }) {
                                 explanation: apod.explanation,
                                 url: apod.hdurl,
                                 copyright: apod.copyright
-                            },
-                            quoteOfTheDay: {
-                                quote: quoteData.quote,
-                                author: quoteData.author,
-                                backgroundImg: quoteData.background,
-                                title: quoteData.title
                             }
                         }));
                     })

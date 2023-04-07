@@ -7,37 +7,37 @@ export default function Navbar() {
 
     if (user) {
         return (
-            <nav id="navbar">
-                <ul className="nav-list">
-                    <li className="nav-item">
+            <nav className="p-1">
+                <ul className="list-none flex justify-evenly items-center">
+                    <li className="border shadow-xl py-3 px-60 text-lg font-light bg-amber-700 uppercase">
                         <NavLink to="/" className={({ isActive }) =>
-                            isActive ? "nav-link-active" : "nav-link"
+                            isActive ? "text-emerald-700" : "no-underline"
                         } end>
                             Home
                         </NavLink>
                     </li>
-                    <li className="nav-item">
+                    <li className="border shadow-inner py-3 px-60 text-lg font-light bg-amber-700 uppercase">
                         <NavLink to="journal" className={({ isActive }) =>
-                            isActive ? "nav-link-active" : "nav-link"
+                            isActive ? "text-emerald-700" : "no-underline text-white"
                         }>
                             Journal
                         </NavLink>
                     </li>
-                    <li className="nav-item">
+                    <li className="border shadow-inner py-3 px-60 text-lg font-light bg-amber-700 uppercase">
                         <NavLink to="tasks" className={({ isActive }) =>
-                            isActive ? "nav-link-active" : "nav-link"
+                            isActive ? "text-emerald-700" : "no-underline text-white"
                         }>
                             Tasks
                         </NavLink>
                     </li>
-                    <li className="nav-item">
+                    <li className="border shadow-inner py-3 px-60 text-lg font-light bg-amber-700 uppercase">
                         <NavLink to="profile" className={({ isActive }) =>
-                            isActive ? "nav-link-active" : "nav-link"
+                            isActive ? "text-emerald-700" : "no-underline text-white"
                         }>
                             Profile
                         </NavLink>
                     </li>
-                    <li className="nav-item">
+                    <li className="border shadow-inner py-3 px-60 text-lg font-light bg-amber-700 uppercase">
                         <button onClick={logout}>Logout</button>
                     </li>
                 </ul>
@@ -47,16 +47,16 @@ export default function Navbar() {
         return (
             <nav id="navbar">
                 <ul className="nav-list">
-                    <li className="nav-item">
+                    <li className="border shadow-inner py-3 px-60 text-lg font-light bg-amber-700 uppercase">
                         <NavLink to="/" className={({ isActive }) =>
-                            isActive ? "nav-link-active" : "nav-link"
+                            isActive ? "text-emerald-700" : "no-underline text-white"
                         } end>
                             Home
                         </NavLink>
                     </li>
-                    <li className="nav-item">
+                    <li className="border shadow-inner py-3 px-60 text-lg font-light bg-amber-700 uppercase">
                         <NavLink to="auth" className={({ isActive }) =>
-                            isActive ? "nav-link-active" : "nav-link"
+                            isActive ? "text-emerald-700" : "no-underline text-white"
                         }>
                             Login
                         </NavLink>

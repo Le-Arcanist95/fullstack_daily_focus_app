@@ -5,7 +5,7 @@ import { AuthProvider } from "./context/AuthProvider";
 import { DataProvider } from "./context/DataProvider";
 
 import App from "./App";
-import "./index.scss";
+import "./index.css";
 
 const root = createRoot(document.getElementById("root"));
 root.render(

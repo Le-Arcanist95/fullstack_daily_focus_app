@@ -12,13 +12,22 @@ export default function AuthForm(props) {
         handleSubmit,
         handleToggle
     } = props;
-
+    // Github copilot -- use tailwindcss snippets to generate code
     return (
-        <section className="auth-form">
+        <section className="flex flex-col items-center justify-center h-screen">
             { isRegister ? (
                 <>
-                    { errorState && <p className="error">{ errorState }</p> }
-                    <form onSubmit={ handleSubmit }>
+                    { errorState && 
+                        <div role="alert">
+                            <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+                                Error
+                            </div>
+                            <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                                <p>{errorState}</p>
+                            </div>
+                        </div>
+                    }
+                    <form onSubmit={ handleSubmit } className="flex flex-col items-center justify-center">
                         <input
                             type="text"
                             name="username"
@@ -26,6 +35,7 @@ export default function AuthForm(props) {
                             onChange={ handleChange }
                             placeholder="Username"
                             required
+                            className="border-2 border-gray-300 p-2 rounded-lg my-2"
                         />
                         <input
                             type="password"
@@ -34,6 +44,7 @@ export default function AuthForm(props) {
                             onChange={ handleChange }
                             placeholder="Password"
                             required
+                            className="border-2 border-gray-300 p-2 rounded-lg my-2"
                         />
                         <input
                             type="password"
@@ -42,6 +53,7 @@ export default function AuthForm(props) {
                             onChange={ handleChange }
                             placeholder="Repeat Password"
                             required
+                            className="border-2 border-gray-300 p-2 rounded-lg my-2"
                         />
                         <input
                             type="email"
@@ -50,15 +62,25 @@ export default function AuthForm(props) {
                             onChange={ handleChange }
                             placeholder="Email"
                             required
+                            className="border-2 border-gray-300 p-2 rounded-lg my-2"
                         />
-                        <button type="submit">Register</button>
+                        <button className="bg-blue-500 text-white p-2 rounded-lg my-2" type="submit">Register</button>
                     </form>
-                    <p>Already have an account? <button onClick={ handleToggle }>Login</button></p>
+                    <p className="mt-4">Already have an account? <button className="text-blue-500 cursor-pointer" onClick={ handleToggle }>Login</button></p>
                 </>
                 ) : (
                     <>
-                        { errorState && <p className="error">{ errorState }</p> }
-                        <form onSubmit={ handleSubmit }>
+                        { errorState && 
+                        <div role="alert">
+                            <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+                                Error
+                            </div>
+                            <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                                <p>{errorState}</p>
+                            </div>
+                        </div>
+                    }
+                        <form onSubmit={ handleSubmit } className="flex flex-col items-center justify-center">
                             <input
                                 type="text"
                                 name="username"
@@ -66,6 +88,7 @@ export default function AuthForm(props) {
                                 onChange={ handleChange }
                                 placeholder="Username"
                                 required
+                                className="border-2 border-gray-300 p-2 rounded-lg my-2"
                             />
                             <input
                                 type="password"
@@ -74,10 +97,11 @@ export default function AuthForm(props) {
                                 onChange={ handleChange }
                                 placeholder="Password"
                                 required
+                                className="border-2 border-gray-300 p-2 rounded-lg my-2"
                             />
-                            <button type="submit">Login</button>
+                            <button className="bg-blue-500 text-white p-2 rounded-lg my-2" type="submit">Login</button>
                         </form>
-                        <p>Don't have an account? <button onClick={ handleToggle }>Register</button></p>
+                        <p className="mt-4">Don't have an account? <button className="text-blue-500 cursor-pointer" onClick={ handleToggle }>Register</button></p>
                     </>
                 )
             }

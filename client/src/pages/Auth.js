@@ -36,16 +36,14 @@ export default function Auth() {
     if (user) return <Navigate to="/dashboard" />;
 
     return (
-        <main className="auth">
-            { redirectState && <Navigate to="/" /> }
-            <AuthForm
-                inputs={ inputs }
-                isRegister={ isRegister }
-                errorState={ errorState }
-                handleChange={ handleChange }
-                handleSubmit={ handleSubmit }
-                handleToggle={ handleToggle }
-            />
-        </main>
-    )
+        <AuthForm
+            inputs={inputs}
+            isRegister={isRegister}
+            errorState={errorState}
+            redirectState={redirectState}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            handleToggle={handleToggle}
+        />
+    );
 }
