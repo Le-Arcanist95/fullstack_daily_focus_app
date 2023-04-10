@@ -2,6 +2,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import { AuthProvider } from "./context/AuthProvider";
+import { LocationProvider } from "./context/LocationProvider";
 import { DataProvider } from "./context/DataProvider";
 
 import App from "./App";
@@ -11,9 +12,11 @@ const root = createRoot(document.getElementById("root"));
 root.render(
     <Router>
         <AuthProvider>
-            <DataProvider>
-                <App />
-            </DataProvider>
+            <LocationProvider>
+                <DataProvider>
+                    <App />
+                </DataProvider>
+            </LocationProvider>
         </AuthProvider>
     </Router>
 );

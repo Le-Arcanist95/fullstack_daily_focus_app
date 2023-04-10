@@ -6,6 +6,7 @@ const DataContext = createContext();
 
 export function DataProvider({ children }) {
     const { user } = useContext(AuthContext);
+    const [loading, setLoading] = useState(true);
     const [entryData, setEntryData] = useState([]);
     const [todoData, setTodoData] = useState([]);
     const [externalApiData, setExternalApiData] = useState({
@@ -137,9 +138,16 @@ export function DataProvider({ children }) {
         }
     };
 
+    useEffect(() => {
+        if (entryData.length > 0 && todoData.length > 0) {
+            setLoading(false);
+        }
+    }, [entryData, todoData]);
+
     return (
         <DataContext.Provider value={
             { 
+                loading,
                 entryData, 
                 todoData, 
                 externalApiData,

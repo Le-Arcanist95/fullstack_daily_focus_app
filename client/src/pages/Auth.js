@@ -36,14 +36,18 @@ export default function Auth() {
     if (user) return <Navigate to="/dashboard" />;
 
     return (
-        <AuthForm
-            inputs={inputs}
-            isRegister={isRegister}
-            errorState={errorState}
-            redirectState={redirectState}
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-            handleToggle={handleToggle}
-        />
+        <>
+            <h2>Star Focus</h2>
+            <p>Welcome to your new place for a little insight into space and keeping track of your thoughts. We hope that you enjoy your stay.</p>
+            <AuthForm
+                inputs={inputs}
+                isRegister={isRegister}
+                errorState={errorState}
+                redirectState={redirectState}
+                handleChange={handleChange}
+                handleSubmit={handleSubmit}
+                handleToggle={handleToggle}
+            />
+        </>
     );
 }

@@ -3,8 +3,7 @@ import Navbar from "./Navbar";
 
 export default function Header() {
     return (
-        <header className="sticky top-0 h-28 bg-slate-500">
-            <h1 className="text-center text-4xl"> Daily Focus App </h1>
+        <header className="sticky top-0 h-16 z-10 bg-transparent opacity-95">
             <Navbar />
         </header>
     );
