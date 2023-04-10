@@ -1,6 +1,6 @@
-import NasaAPOD from "../components/NasaAPOD";
-import DigitalClock from "../components/DigitalClock";
-import SunWidget from "../components/SunWidget";
+import NasaAPOD from "../components/elements/NasaAPOD";
+import DigitalClock from "../components/elements/DigitalClock";
+import SunWidget from "../components/elements/SunWidget";
 
 export default function Home() {
 

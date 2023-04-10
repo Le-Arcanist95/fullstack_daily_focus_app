@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
-import LocationContext from '../context/LocationProvider.js';
-import LoadingWheel from './LoadingWheel.js';
+import LocationContext from '../../context/LocationProvider.js';
+import LoadingWheel from '../utility/LoadingWheel.js';
 
 function SunWidget() {
     const { location, loading } = useContext(LocationContext);
