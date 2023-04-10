@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import AuthContext from "../context/AuthProvider";
-import DataContext from "../context/DataProvider";
+import DataContext from "../context/Third-PartyApiProvider";
 
 export default function Profile() {
     const { user } = useContext(AuthContext);

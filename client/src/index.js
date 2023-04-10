@@ -3,7 +3,9 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 import { AuthProvider } from "./context/AuthProvider";
 import { LocationProvider } from "./context/LocationProvider";
-import { DataProvider } from "./context/DataProvider";
+import { JournalProvider } from "./context/JournalProvider";
+import { TodoProvider } from "./context/TodoProvider";
+import { ThirdPartyApiProvider } from "./context/Third-PartyApiProvider";
 
 import App from "./App";
 import "./index.css";
@@ -13,9 +15,13 @@ root.render(
     <Router>
         <AuthProvider>
             <LocationProvider>
-                <DataProvider>
-                    <App />
-                </DataProvider>
+                <JournalProvider>
+                    <TodoProvider>
+                        <ThirdPartyApiProvider>
+                            <App />
+                        </ThirdPartyApiProvider>
+                    </TodoProvider>
+                </JournalProvider>
             </LocationProvider>
         </AuthProvider>
     </Router>

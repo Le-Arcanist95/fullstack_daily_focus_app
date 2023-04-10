@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import DataContext from "../../context/DataProvider.js";
+import DataContext from "../../context/Third-PartyApiProvider.js";
 import LoadingWheel from "../utility/LoadingWheel.js";
 
 export default function NasaAPOD() {
