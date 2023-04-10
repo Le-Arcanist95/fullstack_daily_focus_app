@@ -17,9 +17,7 @@ app.use(morgan('dev'));
 mongoose.set('strictQuery', true);
 mongoose.connect(MONGO_URI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false
+    useUnifiedTopology: true
 }, () => console.log('Connected to MongoDB'));
 
 // Routes

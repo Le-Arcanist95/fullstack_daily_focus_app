@@ -14,7 +14,7 @@ export default function AuthForm(props) {
     } = props;
     // Github copilot -- use tailwindcss snippets to generate code
     return (
-        <section className="flex flex-col items-center justify-center h-screen">
+        <section className="flex flex-col items-center justify-center">
             { isRegister ? (
                 <>
                     { errorState && 
@@ -35,7 +35,7 @@ export default function AuthForm(props) {
                             onChange={ handleChange }
                             placeholder="Username"
                             required
-                            className="border-2 border-gray-300 p-2 rounded-lg my-2"
+                            className="border-2 border-gray-300 p-2 rounded-full my-2"
                         />
                         <input
                             type="password"
@@ -44,7 +44,7 @@ export default function AuthForm(props) {
                             onChange={ handleChange }
                             placeholder="Password"
                             required
-                            className="border-2 border-gray-300 p-2 rounded-lg my-2"
+                            className="border-2 border-gray-300 p-2 rounded-full my-2"
                         />
                         <input
                             type="password"
@@ -53,7 +53,7 @@ export default function AuthForm(props) {
                             onChange={ handleChange }
                             placeholder="Repeat Password"
                             required
-                            className="border-2 border-gray-300 p-2 rounded-lg my-2"
+                            className="border-2 border-gray-300 p-2 rounded-full my-2"
                         />
                         <input
                             type="email"
@@ -62,9 +62,9 @@ export default function AuthForm(props) {
                             onChange={ handleChange }
                             placeholder="Email"
                             required
-                            className="border-2 border-gray-300 p-2 rounded-lg my-2"
+                            className="border-2 border-gray-300 p-2 rounded-full my-2"
                         />
-                        <button className="bg-blue-500 text-white p-2 rounded-lg my-2" type="submit">Register</button>
+                        <button className="bg-green-300 hover:bg-green-400 py-2 px-4 rounded-full my-2" type="submit">Register</button>
                     </form>
                     <p className="mt-4">Already have an account? <button className="text-blue-500 cursor-pointer" onClick={ handleToggle }>Login</button></p>
                 </>
@@ -88,7 +88,7 @@ export default function AuthForm(props) {
                                 onChange={ handleChange }
                                 placeholder="Username"
                                 required
-                                className="border-2 border-gray-300 p-2 rounded-lg my-2"
+                                className="border-2 border-gray-300 p-2 rounded-full my-2"
                             />
                             <input
                                 type="password"
@@ -97,9 +97,9 @@ export default function AuthForm(props) {
                                 onChange={ handleChange }
                                 placeholder="Password"
                                 required
-                                className="border-2 border-gray-300 p-2 rounded-lg my-2"
+                                className="border-2 border-gray-300 p-2 rounded-full my-2"
                             />
-                            <button className="bg-blue-500 text-white p-2 rounded-lg my-2" type="submit">Login</button>
+                            <button className="bg-green-300 hover:bg-green-400 py-2 px-4 rounded-full my-2" type="submit">Login</button>
                         </form>
                         <p className="mt-4">Don't have an account? <button className="text-blue-500 cursor-pointer" onClick={ handleToggle }>Register</button></p>
                     </>

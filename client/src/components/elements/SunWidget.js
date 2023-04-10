@@ -7,6 +7,7 @@ function SunWidget() {
     const [sunrise, setSunrise] = useState(null);
     const [sunset, setSunset] = useState(null);
     const [currentTime, setCurrentTime] = useState(new Date());
+    const [backgroundClass, setBackgroundClass] = useState('');
 
     useEffect(() => {
         fetch(
@@ -24,9 +25,30 @@ function SunWidget() {
         const timerID = setInterval(() => setCurrentTime(new Date()), 1000);
 
         return () => {
-        clearInterval(timerID);
+            clearInterval(timerID);
         };
     }, []);
+
+    useEffect(() => {
+        if (sunrise && sunset) {
+            const timeDiff = sunset - sunrise;
+            const elapsedTime = currentTime - sunrise;
+            if (elapsedTime >= 0 && elapsedTime <= timeDiff) {
+                const timeOfDay = (elapsedTime / timeDiff) * 100;
+                if (timeOfDay < 20) {
+                    setBackgroundClass('from-blue-900 to-blue-900');
+                } else if (timeOfDay < 40) {
+                    setBackgroundClass('from-blue-900 to-blue-300');
+                } else if (timeOfDay < 60) {
+                    setBackgroundClass('from-blue-300 to-yellow-300');
+                } else if (timeOfDay < 80) {
+                    setBackgroundClass('from-yellow-300 to-orange-400');
+                } else {
+                    setBackgroundClass('from-orange-400 to-red-500');
+                }
+            }
+        }
+    }, [sunrise, sunset, currentTime]);
 
     let sunLeft = null;
     if (sunrise && sunset) {
@@ -45,7 +67,7 @@ function SunWidget() {
         <>
             {loading ? <LoadingWheel /> : (
                 <div className="flex flex-col items-center border-2 border-black rounded-md mb-2">
-                <div className="w-96 h-80 bg-transparent relative flex justify-center items-center p-4">
+                <div className={`w-96 h-80 ${backgroundClass} relative flex justify-center items-center p-4 mt-2`}>
                     <div className="w-96 h-0 border-t-2 border-blue-400 absolute bottom-0 left-0" />
                     {sunLeft !== null && (
                         <div
